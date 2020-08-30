@@ -12,7 +12,7 @@ gpio.setmode(gpio.BCM)
 
 
 app = Flask(__name__)
-path = '/'.join(__file__.split('/')[:-1])
+path = '/'.join(__file__.split('/')[:-1]) + '/'
 # %% Setup gpio varibles
 gpio_file = open(path + 'gpios.json', 'r')
 gpios = json.loads(gpio_file.read())
@@ -54,7 +54,7 @@ def home():
         else:
             pin = request.json['pin']
         new_state = request.json['state']
-        gpio.outout(int(pin), new_state)
+        gpio.output(int(pin), new_state)
 
         return 'ok'
 
