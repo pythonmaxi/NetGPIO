@@ -22,7 +22,7 @@ gpio_file.close()
 
 # %% Init the GPIO'S
 for gpio_pin in gpios.keys():
-    gpio.setup(int(gpios[gpio_pin]['gpio']), gpio.OUT, initial=1)
+    gpio.setup(int(gpios[gpio_pin]['gpio']), gpio.OUT)
 
 
 # %% Function to check gpio state
