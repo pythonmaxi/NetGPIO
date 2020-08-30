@@ -50,10 +50,10 @@ def home():
         return render_template('home.html', **data)
     else:
         if reverse_power:
-            pin = not request.json['pin']
+            new_state = request.json['state']
         else:
-            pin = request.json['pin']
-        new_state = request.json['state']
+            new_state = request.json['state']
+        pin = request.json['pin']
         gpio.output(int(pin), new_state)
 
         return 'ok'
