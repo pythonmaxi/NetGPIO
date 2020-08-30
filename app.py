@@ -12,8 +12,9 @@ gpio.setmode(gpio.BCM)
 
 
 app = Flask(__name__)
+path = '/'.join(__file__.split('/')[:-1])
 # %% Setup gpio varibles
-gpio_file = open('gpios.json', 'r')
+gpio_file = open(path + 'gpios.json', 'r')
 gpios = json.loads(gpio_file.read())
 reverse_power = gpios['reverse']
 gpios = gpios['gpios']
@@ -61,3 +62,4 @@ def home():
 # %% Start server if main
 if __name__ == '__main__':
     app.run(debug=True, port=8080, host='localhost')
+    gpio.cleanup()
