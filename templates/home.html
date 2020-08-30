@@ -8,7 +8,13 @@
     </head>
     <body>
         <h1>GPIO switcher</h1>
-        {% for gpio in gpios %}
+        {% for gpio in gpioList %}
+        <div class="gpioswitch">
+            <label>{{ gpio }}
+                <input type="checkbox" class="gpios" name="{{ gpios[gpio].gpio }}" oninput="updateGPIO(this);"{% if gpios[gpio].state == True %} checked{% endif %}>
+            </label>
+        </div>
         {% endfor %}
+        <script src="/static/javascript.js" charset="utf-8"></script>
     </body>
 </html>
