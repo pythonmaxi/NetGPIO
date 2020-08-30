@@ -50,7 +50,7 @@ def home():
         return render_template('home.html', **data)
     else:
         if reverse_power:
-            new_state = request.json['state']
+            new_state = not request.json['state']
         else:
             new_state = request.json['state']
         pin = request.json['pin']
