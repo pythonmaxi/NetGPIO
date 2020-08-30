@@ -6,11 +6,11 @@ A simple flask application to control your Raspberry Pi's gpio's from a website.
 
 First install some dependencies
 
-`sudo apt install python3-pip apache2 libapache2`
+`sudo apt install python3-pip apache2 libapache2-mod-wsgi-py3`
 
-Then install flask
+Install flask and the gpio stuff
 
-`sudo pip3 install flask`
+`sudo pip3 install flask RPi.GPIO`
 
 Download WebGPIO and configure apache2
 
@@ -22,7 +22,7 @@ sudo cp WebGPIO/WebGPIO.conf /etc/apache2/WebGPIO.conf
 sudo a2ensite WebGPIO.conf
 # remove default website if you havent
 sudo a2dissite 000-default.conf
-# add www-data user to gpio to allow acces to them
+# add www-data user to gpio to allow acces to the gpio
 sudo adduser www-data gpio
 ```
 

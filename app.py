@@ -30,7 +30,7 @@ def processGPIOstate(gpio_dict, reverse):
     # check if GPIO's are on
     for gpio_pin in gpios.keys():
         state = gpio.input(int(gpio_dict[gpio_pin]
-                                   ['gpio']))
+                               ['gpio']))
         if reverse:
             gpio_dict[gpio_pin]['state'] = not state
         else:
