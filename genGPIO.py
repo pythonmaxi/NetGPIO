@@ -9,7 +9,7 @@ import json
 
 dic = {'gpios': {}}
 
-if input('Use reverse power? [y/n]') == 'y':
+if input('Use reverse power? [y/n] ') == 'y':
     dic['reverse'] = True
 
 else:

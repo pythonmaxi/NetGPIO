@@ -22,15 +22,14 @@ gpio_file.close()
 
 # %% Init the GPIO'S
 for gpio_pin in gpios.keys():
-    gpio.setup(int(gpios[gpio_pin]['gpio']), gpio.OUT)
+    gpio.setup(gpios[gpio_pin]['gpio'], gpio.OUT)
 
 
 # %% Function to check gpio state
 def processGPIOstate(gpio_dict, reverse):
     # check if GPIO's are on
     for gpio_pin in gpios.keys():
-        state = gpio.input(int(gpio_dict[gpio_pin]
-                               ['gpio']))
+        state = gpio.input(gpio_dict[gpio_pin]['gpio'])
         if reverse:
             gpio_dict[gpio_pin]['state'] = not state
         else:
