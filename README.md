@@ -2,6 +2,8 @@
 
 A simple flask application to control your Raspberry Pi's gpio's from a website.
 
+![Preview](https://raw.githubusercontent.com/pythonmaxi/NetGPIO/master/netgpio.png)
+
 ## Installation
 
 First install some dependencies
