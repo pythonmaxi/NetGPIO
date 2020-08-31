@@ -9,12 +9,14 @@
     <body>
         <h1>GPIO switcher</h1>
         {% for gpio in gpioList %}
-        <label for="{{ gpio }}">
-            <div class="gpio-container">
-                {{ gpio }}
-                <input type="checkbox" class="gpios" id="{{ gpio }}" name="{{ gpios[gpio].gpio }}" oninput="updateGPIO(this);"{% if gpios[gpio].state == True %} checked{% endif %}>
-            </div>
-        </label>
+        <div class="gpio-container">
+            <label for="{{ gpio }}" class="gpio-parrent">
+                <div class="gpio-div">
+                    {{ gpio }}
+                    <input type="checkbox" class="gpios" id="{{ gpio }}" name="{{ gpios[gpio].gpio }}" oninput="updateGPIO(this);"{% if gpios[gpio].state == True %} checked{% endif %}>
+                </div>
+            </label>
+        </div>
         {% endfor %}
         <script src="/static/javascript.js" charset="utf-8"></script>
     </body>

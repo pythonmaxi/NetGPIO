@@ -9,16 +9,19 @@ body {
 .gpio-container {
     width: 33.3%;
     float: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    height: auto;
-    border: 2px solid rgba(255, 200, 200, 50);
-    text-align: center;
-    box-sizing: border-box;
 }
 
-.gpio-container:hover {
-    z-index: 2;
+.gpio-div {
+    float: center;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2px solid rgba(255, 200, 200, 50);
+    text-align: center;
+    margin: 5px;
+}
+
+.gpio-div:hover {
     background-color: rgba(170, 170, 170, 50);
     transition: 0.3s;
     box-shadow: 0 0 5px grey;
