@@ -9,7 +9,11 @@ import json
 
 dic = {'gpios': {}}
 
-dic['reverse'] = bool(input('Use reverse power? '))
+if input('Use reverse power? [y/n]') == 'y':
+    dic['reverse'] = True
+
+else:
+    dic['reverse'] = False
 
 while True:
     inp = input('GPIO name: ')
@@ -17,6 +21,6 @@ while True:
         break
     else:
         dic['gpios'][inp] = {}
-        dic['gpios'][inp]['gpio'] = input('GPIO number: ')
+        dic['gpios'][inp]['gpio'] = int(input('GPIO number: '))
 with open('gpios.json', 'w') as gpios:
     gpios.write(json.dumps(dic, sort_keys=True, indent=4))
