@@ -15,10 +15,11 @@ body {
     border: 2px solid rgba(255, 200, 200, 50);
     text-align: center;
     box-sizing: border-box;
-    box-shadow: 0 0 5px grey;
 }
 
 .gpio-container:hover {
+    z-index: 2;
     background-color: rgba(170, 170, 170, 50);
     transition: 0.3s;
+    box-shadow: 0 0 5px grey;
 }
