@@ -1,5 +1,6 @@
-body {
-    background-color: lightblue;
+html {
+    background: linear-gradient(-20deg, rgb(100, 100, 255), lightgreen);
+    height: 100%;
 }
 
 * {
