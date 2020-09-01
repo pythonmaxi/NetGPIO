@@ -49,7 +49,8 @@ def home():
         return render_template('home.html', **data)
     else:
         pin = int(request.json['pin'])
-        if processGPIOstate(gpios)[pin]['reverse']:
+        name = request.json['name']
+        if processGPIOstate(gpios)[name]['reverse']:
             new_state = not request.json['state']
         else:
             new_state = request.json['state']

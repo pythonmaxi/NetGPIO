@@ -1,6 +1,7 @@
 function updateGPIO(gpio) {
     var state = gpio.checked;
-    var name = gpio.name;
+    var name = gpio.id;
+    var pin = gpio.name;
     var server = new XMLHttpRequest();
     server.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -11,7 +12,7 @@ function updateGPIO(gpio) {
     }
     server.open('POST', '/');
     server.setRequestHeader('Content-Type', 'application/json');
-    server.send(JSON.stringify({'pin': name, 'state': state}));
+    server.send(JSON.stringify({'pin': pin, 'state': state, 'name':name}));
 }
 
 function updateStates() {
