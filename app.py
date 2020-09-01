@@ -27,11 +27,11 @@ for gpio_pin in gpios.keys():
 
 
 # %% Function to check gpio state
-def processGPIOstate(gpio_dict, reverse):
+def processGPIOstate(gpio_dict):
     # check if GPIO's are on
     for gpio_pin in gpios.keys():
         state = gpio.input(gpio_dict[gpio_pin]['gpio'])
-        if reverse:
+        if gpio_dict[gpio_pin]['reverse']:
             gpio_dict[gpio_pin]['state'] = not state
         else:
             gpio_dict[gpio_pin]['state'] = state
@@ -42,18 +42,18 @@ def processGPIOstate(gpio_dict, reverse):
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'GET':
-        gpioProcessed = processGPIOstate(gpios, reverse_power)
+        gpioProcessed = processGPIOstate(gpios)
         data = {
             'gpios': gpioProcessed,
             'gpioList': list(gpioProcessed.keys())
             }
         return render_template('home.html', **data)
     else:
-        if reverse_power:
+        pin = request.json['pin']
+        if processGPIOstate(gpios)[pin]['reverse']:
             new_state = not request.json['state']
         else:
             new_state = request.json['state']
-        pin = request.json['pin']
         gpio.output(int(pin), new_state)
         return 'ok'
 
