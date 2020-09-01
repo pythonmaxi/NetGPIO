@@ -13,6 +13,6 @@ while (true) {
             alert('Some error on the server, Try to reload');
         }
     }
-    server.open('POST', '/waitevent');
+    server.open('POST', '/waitevent', true);
     server.send();
 }
