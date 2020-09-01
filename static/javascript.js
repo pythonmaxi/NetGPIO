@@ -14,8 +14,17 @@ function updateGPIO(gpio) {
     server.send(JSON.stringify({'pin': name, 'state': state}));
 }
 
-if (window.Worker) {
-    var waiter = new Worker('/static/worker.js');
-} else {
-    alert('Your browser does not support workers. multi client mode will not work');
+function updateStates() {
+    server.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            state = JSON.parse(server.responseText);
+        } else if (this.readyState == 4) {
+            alert('Some error on the server, Try to reload');
+        }
+    }
+    server.open('POST', '/state', true);
+    server.send();
+    for (var gpio in state) {
+        document.getElementById(gpio).checked = state[gpio];
+    }
 }
