@@ -21,7 +21,7 @@ function updateStates() {
         if (this.readyState == 4 && this.status == 200) {
             state = JSON.parse(server.responseText);
             for (var gpio in state) {
-                document.getElementById(gpio).checked = state[gpio];
+                document.getElementById(gpio).checked = state[gpio]['state'];
                 console.log(state, gpio);
             }
         } else if (this.readyState == 4) {
@@ -31,5 +31,3 @@ function updateStates() {
     server.open('POST', '/state', true);
     server.send();
 }
-
-var updateState = setInterval(updateStates(), 1000);
