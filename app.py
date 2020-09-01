@@ -48,7 +48,7 @@ def home():
             }
         return render_template('home.html', **data)
     else:
-        pin = request.json['pin']
+        pin = int(request.json['pin'])
         if processGPIOstate(gpios)[pin]['reverse']:
             new_state = not request.json['state']
         else:
@@ -59,7 +59,7 @@ def home():
 
 @app.route('/state', methods=['POST'])
 def wait():
-    return jsonify(processGPIOstate(gpios, reverse_power))
+    return jsonify(processGPIOstate(gpios))
 
 
 # %% Start server if main
