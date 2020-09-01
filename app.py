@@ -33,7 +33,7 @@ def processGPIOstate(gpio_dict):
         if gpio_dict[gpio_pin]['reverse']:
             gpio_dict[gpio_pin]['state'] = not state
         else:
-            gpio_dict[gpio_pin]['state'] = state
+            gpio_dict[gpio_pin]['state'] = bool(int(state))
     return gpio_dict
 
 

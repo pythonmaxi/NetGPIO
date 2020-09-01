@@ -16,18 +16,20 @@ function updateGPIO(gpio) {
 }
 
 function updateStates() {
+    var server = new XMLHttpRequest();
     server.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             state = JSON.parse(server.responseText);
+            for (var gpio in state) {
+                document.getElementById(gpio).checked = state[gpio];
+                console.log(state, gpio);
+            }
         } else if (this.readyState == 4) {
             alert('Some error on the server, Try to reload');
         }
     }
     server.open('POST', '/state', true);
     server.send();
-    for (var gpio in state) {
-        document.getElementById(gpio).checked = state[gpio];
-    }
 }
 
 var updateState = setInterval(updateStates(), 1000);
