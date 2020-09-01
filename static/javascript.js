@@ -28,3 +28,5 @@ function updateStates() {
         document.getElementById(gpio).checked = state[gpio];
     }
 }
+
+var updateState = setInterval(updateStates(), 1000);
