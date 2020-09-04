@@ -1,0 +1,13 @@
+[Unit]
+Description=Tornado websocket service
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/NetGPIO/
+ExecStart=/var/www/NetGPIO/GPIOsocket.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

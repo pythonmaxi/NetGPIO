@@ -10,9 +10,9 @@ First install some dependencies
 
 `sudo apt install python3-pip apache2 libapache2-mod-wsgi-py3`
 
-Install flask and the gpio stuff
+Install fpython dependencies
 
-`sudo pip3 install flask RPi.GPIO`
+`sudo pip3 install flask RPi.GPIO tornado`
 
 Download NetGPIO and configure apache2
 
