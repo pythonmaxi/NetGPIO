@@ -1,5 +1,5 @@
 [Unit]
-Description=Tornado websocket service
+Description=GPIO Websocket service
 After=network.target
 
 [Service]

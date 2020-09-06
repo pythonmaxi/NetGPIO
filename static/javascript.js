@@ -2,8 +2,8 @@ var useSocket
 var socket
 if (window.WebSocket) {
     useSocket = true;
-    var location = window.location;
-    socket = new WebSocket('ws://' + location.host + '/socket');
+    var loc = window.location;
+    socket = new WebSocket('ws://' + loc.host + '/socket');
     socket.onopen = function () {
         console.log('connection to server established')
     }

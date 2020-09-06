@@ -15,6 +15,9 @@ import socket
 class GPIOsocket(tornado.websocket.WebSocketHandler):
     clients = set()
 
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+
     def open(self):
         self.clients.add(self)
         print('New client connected')
