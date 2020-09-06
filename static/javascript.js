@@ -15,6 +15,9 @@ if (window.WebSocket) {
     socket.onerror = function (event) {
         console.log('error from server ' + event.data);
     }
+    window.onunload = function () {
+        socket.close()
+    }
 } else {
     useSocket = false;
     alert('Your browser does not support WebSockets, multiple clients wont be supported');
@@ -51,7 +54,6 @@ function updateStates() {
             state = JSON.parse(server.responseText);
             for (var gpio in state) {
                 document.getElementById(gpio).checked = state[gpio]['state'];
-                console.log(state, gpio);
             }
         } else if (this.readyState == 4) {
             alert('Some error on the server, Try to reload');
