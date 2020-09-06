@@ -38,7 +38,7 @@ application = tornado.web.Application([(r'/socket', GPIOsocket)])
 
 if __name__ == "__main__":
     http_server = tornado.httpserver.HTTPServer(application)
-    http_server.listen(5000)
+    http_server.listen(8888)
     host = socket.gethostbyname(socket.gethostname())
     print(f'Started server at {host}')
     tornado.ioloop.IOLoop.instance().start()

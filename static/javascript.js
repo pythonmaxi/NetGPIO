@@ -3,11 +3,17 @@ var socket
 if (window.WebSocket) {
     useSocket = true;
     var location = window.location;
-    socket = new WebSocket('ws://' + location.host + ':5000/socket');
+    socket = new WebSocket('ws://' + location.host + '/socket');
+    socket.onopen = function () {
+        console.log('connection to server established')
+    }
     socket.onmessage = function (event) {
         if (event.data == 'changed') {
             updateStates();
         }
+    }
+    socket.onerror = function (event) {
+        console.log('error from server ' + event.data);
     }
 } else {
     useSocket = false;
