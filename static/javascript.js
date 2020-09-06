@@ -3,7 +3,7 @@ var socket
 if (window.WebSocket) {
     useSocket = true;
     var loc = window.location;
-    socket = new WebSocket('ws://' + loc.host + '/socket');
+    socket = new WebSocket('ws://' + loc.host + ':8888/socket');
     socket.onopen = function () {
         console.log('connection to server established')
     }
