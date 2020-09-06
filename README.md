@@ -8,7 +8,11 @@ A simple flask application to control your Raspberry Pi's gpio's from a website.
 
 First install some dependencies
 
-`sudo apt install python3-pip apache2 libapache2-mod-wsgi-py3`
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install python3-pip apache2 libapache2-mod-wsgi-py3
+```
 
 Install fpython dependencies
 
@@ -35,6 +39,13 @@ cd NetGPIO
 ./genGPIO.py
 #or
 python3 genGPIO.py
+```
+
+Add the NetGPIO service
+
+```
+sudo ln /var/www/NetGPIO/NetGPIO.service /etc/systemd/system/NetGPIO.service
+sudo systemctl enable NetGPIO
 ```
 
 Finally just restart apache2
