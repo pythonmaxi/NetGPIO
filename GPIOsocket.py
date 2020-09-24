@@ -43,5 +43,5 @@ if __name__ == "__main__":
     http_server = tornado.httpserver.HTTPServer(application)
     http_server.listen(8888)
     host = socket.gethostbyname(socket.gethostname())
-    print(f'Started server at {host}')
+    print('Started server')
     tornado.ioloop.IOLoop.instance().start()

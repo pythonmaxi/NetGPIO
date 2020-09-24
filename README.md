@@ -24,7 +24,7 @@ Download NetGPIO and configure apache2
 cd /var/www/
 sudo git clone https://github.com/pythonmaxi/NetGPIO.git
 sudo chown www-data:www-data NetGPIO
-sudo cp NetGPIO/NetGPIO.conf /etc/apache2/NetGPIO.conf
+sudo cp NetGPIO/NetGPIO.conf /etc/apache2/sites-avilable/NetGPIO.conf
 sudo a2ensite NetGPIO.conf
 # remove default website if you havent
 sudo a2dissite 000-default.conf

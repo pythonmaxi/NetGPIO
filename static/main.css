@@ -1,6 +1,12 @@
 html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
     background: linear-gradient(-20deg, rgb(100, 100, 255), lightgreen);
     height: 100%;
+    width: 100%;
 }
 
 * {
@@ -8,8 +14,7 @@ html {
  }
 
 .gpio-container {
-    width: 33.3%;
-    float: left;
+    width: 100%;
 }
 
 .gpio-div {
@@ -26,4 +31,11 @@ html {
     background-color: rgba(170, 170, 170, 50);
     transition: 0.3s;
     box-shadow: 0 0 5px grey;
+}
+
+@media only screen and (min-width: 600px) {
+    .gpio-container {
+        width: 33.3%;
+        float: left;
+    }
 }
