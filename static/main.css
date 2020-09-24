@@ -4,14 +4,20 @@ html {
 }
 
 body {
-    background: linear-gradient(-20deg, rgb(100, 100, 255), lightgreen);
+    background-image: linear-gradient(-20deg, rgb(100, 100, 255), lightgreen);
+    background-repeat: none;
     height: 100%;
     width: 100%;
+    margin: 0px;
 }
 
 * {
      font-family: monospace;
  }
+
+*:focus {
+    outline: none;
+}
 
 .gpio-container {
     width: 100%;
