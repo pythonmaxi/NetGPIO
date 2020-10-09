@@ -22,7 +22,18 @@ if (window.WebSocket) {
     useSocket = false;
     alert('Your browser does not support WebSockets, multiple clients wont be supported');
 }
-
+// Add some event listeners
+var gpio_containers = document.getElementsByClassName('gpio-parrent')
+for (var i = 0; 1 < gpio_containers.length; i++) {
+    gpio_containers[i].addEventListener('click', () => {
+        let currentGPIO = gpio_containers[gpioIndex];
+        if (currentGPIO.classList.contains('off')) {
+            currentGPIO.classList.remove('off')
+        } else {
+            currentGPIO.classList.add('off')
+        }
+    });
+}
 var gpios = document.getElementsByClassName('gpios')
 for (var i = 0; i < gpios.length; i++) {
     gpios[i].addEventListener('click', function (e) {
@@ -56,7 +67,8 @@ function updateStates() {
                 document.getElementById(gpio).checked = state[gpio]['state'];
             }
         } else if (this.readyState == 4) {
-            alert('Some error on the server, Try to reload');
+            alert('Some error on the server, Reloading');
+            window.location.reload();
         }
     }
     server.open('POST', '/state', true);
