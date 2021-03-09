@@ -6,14 +6,15 @@ html {
 body {
     background-image: linear-gradient(-20deg, rgb(100, 100, 255), lightgreen);
     background-repeat: none;
+    background-size: cover;
     height: 100%;
     width: 100%;
     margin: 0px;
 }
 
 * {
-     font-family: monospace;
- }
+    font-family: monospace;
+}
 
 *:focus {
     outline: none;
@@ -46,7 +47,7 @@ h1 {
     text-align: center;
 }
 
-.gpio-parrent.off .gpio-div{
+.gpio-parrent.checked .gpio-div {
     background-color: rgb(255, 0, 0);
 }
 

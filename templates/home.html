@@ -17,7 +17,7 @@
             <label for="{{ gpio }}" class="gpio-parrent">
                 <div class="gpio-div">
                     {{ gpio }}
-                    <input type="checkbox" class="gpios" id="{{ gpio }}" name="{{ gpios[gpio].gpio }}" {% if gpios[gpio].state == True %} checked{% endif %}>
+                    <input type="checkbox" class="gpios" id="{{ gpio }}" name="{{ gpios[gpio].gpio }}" hidden{% if gpios[gpio].state == True %} checked{% endif %}>
                 </div>
             </label>
         </div>

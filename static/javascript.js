@@ -20,27 +20,15 @@ if (window.WebSocket) {
     }
 } else {
     useSocket = false;
-    alert('Your browser does not support WebSockets, multiple clients wont be supported');
+    alert('Your browser does not support WebSockets, multiple clients wont work');
 }
-// Add some event listeners
-var gpio_containers = document.getElementsByClassName('gpio-parrent')
-for (var i = 0; 1 < gpio_containers.length; i++) {
-    gpio_containers[i].addEventListener('click', () => {
-        let currentGPIO = gpio_containers[gpioIndex];
-        if (currentGPIO.classList.contains('off')) {
-            currentGPIO.classList.remove('off')
-        } else {
-            currentGPIO.classList.add('off')
-        }
-    });
-}
-var gpios = document.getElementsByClassName('gpios')
-for (var i = 0; i < gpios.length; i++) {
-    gpios[i].addEventListener('click', function (e) {
-        if (useSocket == true) {
-            socket.send('changed')
-        }
-        var gpio = e.target || e.srcElement;
+
+document.querySelectorAll('.gpios').forEach((el) => {
+    if (el.checked) {
+        el.classLists.add('checked')
+    }
+    e.addEventListener('change', () => {
+        var gpio = el;
         var state = gpio.checked;
         var name = gpio.id;
         var pin = gpio.name;
@@ -54,9 +42,12 @@ for (var i = 0; i < gpios.length; i++) {
         }
         server.open('POST', '/');
         server.setRequestHeader('Content-Type', 'application/json');
-        server.send(JSON.stringify({'pin': pin, 'state': state, 'name':name}));
-    });
-}
+        server.send(JSON.stringify({'pin': pin, 'state': state, 'name': name}));
+        if (useSocket == true) {
+            socket.send('changed')
+        }
+    })
+});
 
 function updateStates() {
     var server = new XMLHttpRequest();
@@ -74,3 +65,13 @@ function updateStates() {
     server.open('POST', '/state', true);
     server.send();
 }
+
+document.querySelectorAll('.gpio-container').forEach((el) => {
+    el.querySelector('.gpios').addEventListener('change', function () {
+        if (this.checked) {
+            el.classLists.add('checked')
+        } else {
+            el.classLists.remove('checked')
+        }
+    })
+});
